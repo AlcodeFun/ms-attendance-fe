@@ -192,39 +192,39 @@ export default {
     this.updateLocation();
   },
   methods: {
-    //static coordinate for debugging
-    updateLocation() {
-      const lat = -6.577023245193599;
-      const lng = 106.81070304025452;
-      this.center = [lat, lng];
-      this.markerLatLng = [lat, lng];
-    },
+    // static coordinate for debugging
     // updateLocation() {
-    //   const geoOptions = {
-    //     enableHighAccuracy: true,
-    //     timeout: 10000,
-    //     maximumAge: 0,
-    //   };
-
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(
-    //       (position) => {
-    //         const lat = position.coords.latitude;
-    //         const lng = position.coords.longitude;
-
-    //         this.center = [lat, lng];
-    //         this.markerLatLng = [lat, lng];
-    //       },
-    //       (error) => {
-    //         console.error("Error getting location: ", error);
-    //         alert("Could not get your current location.");
-    //       },
-    //       geoOptions
-    //     );
-    //   } else {
-    //     alert("Geolocation is not supported by this browser.");
-    //   }
+    //   const lat = -6.577023245193599;
+    //   const lng = 106.81070304025452;
+    //   this.center = [lat, lng];
+    //   this.markerLatLng = [lat, lng];
     // },
+    updateLocation() {
+      const geoOptions = {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      };
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            this.center = [lat, lng];
+            this.markerLatLng = [lat, lng];
+          },
+          (error) => {
+            console.error("Error getting location: ", error);
+            alert("Could not get your current location.");
+          },
+          geoOptions
+        );
+      } else {
+        alert("Geolocation is not supported by this browser.");
+      }
+    },
     toggleCamera() {
       if (this.isCameraOpen) {
         this.isCameraOpen = false;
@@ -244,7 +244,6 @@ export default {
         audio: false,
         video: true,
       };
-
       navigator.mediaDevices
         .getUserMedia(constraints)
         .then((stream) => {

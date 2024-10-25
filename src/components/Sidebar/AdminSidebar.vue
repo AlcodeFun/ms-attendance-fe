@@ -15,7 +15,7 @@
       <!-- User Area -->
       <div class="profile-info d-flex flex-column" style="gap: 18px">
         <img
-          style="border-radius: 50%; width: 120px; margin: auto"
+          style="border-radius: 50%; width: 120px; height: 120px; margin: auto"
           :src="getUser?.urlprofile || require('@/assets/avatar.png')"
         />
         <h2 style="font-size: 20px; font-weight: 600; text-align: center">
